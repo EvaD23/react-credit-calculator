@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import Calculator from "./Calculator";
+import { useState } from 'react';
+import {calculTable} from "./calculating";
+import SheduleTable from "./SheduleTable";
 
 function App() {
+  const [sum, setSum] = useState(10000);
+  const [rate, setRate] = useState(1);
+  const [term, setTerm] = useState(1);
+  const calculating = calculTable(sum,term * 12, rate);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <Calculator sum={sum} rate={rate} term={term} setSum={setSum} setRate={setRate} setTerm={setTerm}/>
+    <SheduleTable data={calculating}/>
+
     </div>
   );
 }
